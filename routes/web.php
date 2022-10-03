@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PageController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,10 +17,14 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('/home', function () {
-    return view('home', ['name'=> "Jack"]);
-});
-Route::get('/info', function () {
-    return view('Info');
-});
+
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard');
+
+require __DIR__.'/auth.php';
+
+Route::get('/home', [PageController::class, 'home'])->name('home');
+Route::get('/aboutus', [PageController::class, 'aboutus'])->name('aboutus');
+Route::get('/contactus', [PageController::class, 'contactus'])->name('contactus');
 

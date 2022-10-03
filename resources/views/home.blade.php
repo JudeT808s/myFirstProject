@@ -8,10 +8,6 @@
 </head>
 <body>
   <h1>Sick Mode</h1>
-    @if($name == "Jack")
     <h1>Hello predator</h1>
-    @else
-    <h1>Hello</h1>
-    @endif
 </body>
 </html>
